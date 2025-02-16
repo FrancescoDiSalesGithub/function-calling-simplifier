@@ -12,3 +12,10 @@ class Executioner:
             else:
                 print('Function not found:', tool.function.name)
 
+    def run_with_return_value(self):
+        for tool in self.response_ollama.message.tool_calls or []:
+            function_to_call = self.dict_function.get(tool.function.name)
+            if function_to_call:
+                return function_to_call(**tool.function.arguments)
+            else:
+                return None

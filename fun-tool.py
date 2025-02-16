@@ -1,7 +1,7 @@
 class Executioner:
-    def __init__(self,name_function,dict_function:dict,response_ollama):
+    def __init__(self,real_function:object,name_function:str,dict_function:dict,response_ollama):
         self.name_function= name_function
-        self.dict_function= dict_function
+        self.dict_function= {str(self.name_function):self.real_function}
         self.response_ollama = response_ollama
 
     def run(self):
